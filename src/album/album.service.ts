@@ -36,9 +36,6 @@ export class AlbumService {
 }
 
 
-
-
-
 async delete(id: string) {
     const album = await this.albumRepository.findOneBy({"id":id});
     if (!album)

@@ -9,6 +9,7 @@ import {
   JoinColumn,
   OneToOne,
 } from 'typeorm';
+import { UsuarioEntity } from 'src/usuario/usuario.entity';
 
 @Entity()
 export class AlbumEntity {
@@ -23,5 +24,10 @@ export class AlbumEntity {
 
   @Column()
   titulo: string;
+  usuario: any;
+
+
+  @ManyToOne(type = UsuarioEntity, usuario => usuario.albums)
+  usuario: UsuarioEntity;
 }
 

@@ -19,6 +19,9 @@ export class SportService {
       usuario.nombre = usuarioDTO.nombre;
       usuario.email = usuarioDTO.email;
       usuario.telefono = usuarioDTO.telefono;
+      if (usuario.telefono.length  > 1 || usuario.telefono.length  <11) {
+        throw new Error('El valor del ISO debe estar entre 100 y 6400');
+      }
       await this.usuarioRepository.save(usuario);
       return usuarioDTO;
     } catch (error) {

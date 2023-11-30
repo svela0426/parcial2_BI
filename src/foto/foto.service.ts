@@ -11,7 +11,7 @@ export class FotoService {
     private readonly fotoRepository: Repository<FotoEntity>
   ) {}
 
-  async create(fotoDTO: FotoDTO): Promise<FotoDTO> {
+  async createFoto(fotoDTO: FotoDTO): Promise<FotoDTO> {
     try {
       const foto = new FotoEntity();
       foto.iso = fotoDTO.iso;
@@ -49,7 +49,7 @@ export class FotoService {
     }
   }
 
-  async findOne(id: string): Promise<FotoDTO> {
+  async findFotoByID(id: string): Promise<FotoDTO> {
     const foto = await this.fotoRepository.findOneBy({"id":id});
   
     if (!foto) {
@@ -59,11 +59,11 @@ export class FotoService {
     }
   }
 
-    async findAll(): Promise<FotoDTO[]> {
+    async findAllFotos(): Promise<FotoDTO[]> {
         return await this.fotoRepository.find();
     }
 
-    async delete(id: string) {
+    async deleteFoto(id: string) {
         const foto = await this.fotoRepository.findOneBy({"id":id});
         if (!foto)
         throw new Error('foto no encontrado');

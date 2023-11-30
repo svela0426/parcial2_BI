@@ -8,8 +8,10 @@ import {
   JoinTable,
   JoinColumn,
   OneToOne,
+  ManyToOne,
 } from 'typeorm';
 import { UsuarioEntity } from 'src/usuario/usuario.entity';
+import { type } from 'os';
 
 @Entity()
 export class AlbumEntity {
@@ -24,10 +26,8 @@ export class AlbumEntity {
 
   @Column()
   titulo: string;
-  usuario: any;
 
-
-  @ManyToOne(type = UsuarioEntity, usuario => usuario.albums)
+  @ManyToOne(() => UsuarioEntity, (usuario) => usuario.albums)
   usuario: UsuarioEntity;
 }
 

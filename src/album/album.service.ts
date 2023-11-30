@@ -4,12 +4,17 @@ import { AlbumDTO } from './album.dto';
 
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { FotoEntity } from 'src/foto/foto.entity';
+import { FotoService } from 'src/foto/foto.service';
 
 @Injectable()
 export class AlbumService {
   constructor(
     @InjectRepository(AlbumEntity)
-    private readonly albumRepository: Repository<AlbumEntity>
+    private readonly albumRepository: Repository<AlbumEntity>,
+    @InjectRepository(FotoEntity)
+    private readonly fotoRepository: Repository<FotoEntity>,
+
   ) {}
 
   async create(albumDTO: AlbumDTO): Promise<AlbumDTO> {
@@ -28,12 +33,41 @@ export class AlbumService {
     }
   }
 
+
+
+
+  async addPhotoToAlbum(id_foto: string, id_album): Promise<AlbumDTO> {
+    const foto = await this.fotoRepository.findOneBy({ "id": id_foto });
+  
+    if (!foto) {
+      throw new Error('Foto no encontrada');
+    }
+  
+    const album = await this.albumRepository.findOneBy({ "id": id_album });
+  
+    if (foto.fecha >= album.fecha_inicio && foto.fecha <= album.fecha_fin) {
+      album.fotos.push(foto);
+      await this.albumRepository.save(album);
+      return album;
+    } else {
+      throw new Error('La fecha de la foto no está dentro del rango del álbum');
+    }
+  }
+  
+
+
+
+
   async findOne(id: string): Promise<AlbumDTO> {
     const album = await this.albumRepository.findOneBy({"id":id});
     if (!album) 
             throw new Error('album no encontrado');
     else 
         return album;
+}
+
+async findAll(): Promise<AlbumDTO[]> {
+  return await this.albumRepository.find();
 }
 
 

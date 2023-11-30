@@ -12,6 +12,7 @@ import {
 } from 'typeorm';
 import { UsuarioEntity } from 'src/usuario/usuario.entity';
 import { type } from 'os';
+import {FotoEntity} from 'src/foto/foto.entity';
 
 @Entity()
 export class AlbumEntity {
@@ -29,5 +30,9 @@ export class AlbumEntity {
 
   @ManyToOne(() => UsuarioEntity, (usuario) => usuario.albums)
   usuario: UsuarioEntity;
+
+  @OneToMany(type => FotoEntity, foto => foto.album, { cascade: true, eager: true }) 
+  fotos: FotoEntity[];
 }
+
 

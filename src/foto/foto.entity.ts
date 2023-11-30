@@ -8,7 +8,11 @@ import {
   JoinTable,
   JoinColumn,
   OneToOne,
+  ManyToOne,
 } from 'typeorm';
+
+import {AlbumEntity} from 'src/album/album.entity';
+import { UsuarioEntity } from 'src/usuario/usuario.entity';
 
 @Entity()
 export class FotoEntity {
@@ -26,5 +30,11 @@ export class FotoEntity {
 
   @Column()
   fecha: Date;
+
+  @ManyToOne(type => AlbumEntity, album => album.fotos) // Many to one relationship
+  album: AlbumEntity;
+
+  @ManyToOne(() => UsuarioEntity, (usuario) => usuario.albums)
+  usuario: UsuarioEntity;
 
 }

@@ -17,6 +17,7 @@ export class FotoService {
       foto.iso = fotoDTO.iso;
       foto.velObturacion = fotoDTO.velObturacion;
       foto.apertura = fotoDTO.apertura;
+      foto.fecha=fotoDTO.fecha
 
       // Validar ISO
       if (foto.iso < 100 || foto.iso > 6400) {

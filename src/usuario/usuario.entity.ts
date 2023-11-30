@@ -1,6 +1,7 @@
 import {Column,Entity,OneToMany,PrimaryGeneratedColumn} from 'typeorm';
 
 import { AlbumEntity } from 'src/album/album.entity';
+import { FotoEntity } from 'src/foto/foto.entity';
 
 @Entity()
 export class UsuarioEntity {
@@ -20,6 +21,9 @@ export class UsuarioEntity {
 
   @OneToMany(() => AlbumEntity, (album) => album.usuario)
   albums: AlbumEntity[];
-  static user: any;
+
+  @OneToMany(() => FotoEntity, (foto) => foto.usuario)
+  fotos: FotoEntity[];
+  
 
 }

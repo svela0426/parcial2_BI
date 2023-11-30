@@ -7,7 +7,7 @@ import { Repository } from 'typeorm';
 import { error } from 'console';
 
 @Injectable()
-export class SportService {
+export class UsuarioService {
   constructor(
     @InjectRepository(UsuarioEntity)
     private readonly usuarioRepository: Repository<UsuarioEntity>,
@@ -19,7 +19,7 @@ export class SportService {
       usuario.nombre = usuarioDTO.nombre;
       usuario.email = usuarioDTO.email;
       usuario.telefono = usuarioDTO.telefono;
-      if (usuario.telefono.length  > 1 || usuario.telefono.length  <11) {
+      if (usuario.telefono.length  > 1 && usuario.telefono.length  <11) {
         throw new Error('El valor del ISO debe estar entre 100 y 6400');
       }
       await this.usuarioRepository.save(usuario);

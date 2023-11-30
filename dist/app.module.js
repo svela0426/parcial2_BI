@@ -10,12 +10,36 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const typeorm_1 = require("@nestjs/typeorm");
+const usuario_module_1 = require("./usuario/usuario.module");
+const foto_module_1 = require("./foto/foto.module");
+const album_module_1 = require("./album/album.module");
+const album_entity_1 = require("./album/album.entity");
+const foto_entity_1 = require("./foto/foto.entity");
+const usuario_entity_1 = require("./usuario/usuario.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [usuario_module_1.UsuarioModule,
+            foto_module_1.FotoModule,
+            album_module_1.AlbumModule,
+            typeorm_1.TypeOrmModule.forRoot({
+                type: 'postgres',
+                host: 'localhost',
+                port: 5432,
+                username: 'postgres',
+                password: 'millos2011',
+                database: 'postgres',
+                entities: [album_entity_1.AlbumEntity, foto_entity_1.FotoEntity, usuario_entity_1.UsuarioEntity],
+                dropSchema: true,
+                synchronize: true,
+                keepConnectionAlive: true,
+                migrations: [__dirname + '/migration/**/*{.ts,.js}'],
+                migrationsRun: false,
+                logging: true,
+            }),],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

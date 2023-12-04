@@ -1,5 +1,5 @@
-import { UsuarioEntity } from 'src/usuario/usuario.entity';
-import { FotoEntity } from 'src/foto/foto.entity';
+import { UsuarioEntity } from '../usuario/usuario.entity';
+import { FotoEntity } from '../foto/foto.entity';
 export declare class AlbumEntity {
     id: string;
     fecha_inicio: Date;

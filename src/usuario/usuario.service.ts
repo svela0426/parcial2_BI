@@ -20,17 +20,17 @@ export class UsuarioService {
       usuario.email = usuarioDTO.email;
       usuario.telefono = usuarioDTO.telefono;
       if (usuario.telefono.length  > 1 && usuario.telefono.length  <11) {
-        throw new Error('El valor del ISO debe estar entre 100 y 6400');
+        throw new Error('El valor del tel debe estar entre 100 y 6400');
       }
       await this.usuarioRepository.save(usuario);
       return usuarioDTO;
+
     } catch (error) {
-      // Manejar el error de manera adecuada (por ejemplo, loguearlo o lanzar una excepción personalizada)
-      throw new Error(`Error al crear el deporte: ${error.message}`);
+      throw new Error(`Error al crear el usuario: ${error.message}`);
     }
   }
 
-  async findOne(id: string): Promise<UsuarioDTO> {
+  async findOne(id: string): Promise<UsuarioEntity> {
     const usuario = await this.usuarioRepository.findOneBy({"id":id});
   
     if (!usuario) {

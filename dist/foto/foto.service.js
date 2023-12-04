@@ -43,14 +43,14 @@ let FotoService = class FotoService {
                 throw new Error('Máximo dos valores pueden estar por encima del valor medio');
             }
             await this.fotoRepository.save(foto);
-            return fotoDTO;
+            return foto;
         }
         catch (error) {
             throw new Error(`Error al crear el deporte: ${error.message}`);
         }
     }
     async findFotoByID(id) {
-        const foto = await this.fotoRepository.findOneBy({ "id": id });
+        const foto = await this.fotoRepository.findOne({ where: { id } });
         if (!foto) {
             throw new Error('foro no encontrado');
         }
@@ -62,7 +62,7 @@ let FotoService = class FotoService {
         return await this.fotoRepository.find();
     }
     async deleteFoto(id) {
-        const foto = await this.fotoRepository.findOneBy({ "id": id });
+        const foto = await this.fotoRepository.findOne({ where: { id } });
         if (!foto)
             throw new Error('foto no encontrado');
         else

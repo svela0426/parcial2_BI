@@ -14,13 +14,15 @@ export class FotoController {
 
     @Get(':fotoId')
     async findOneBy(@Param('fotoId') fotoId: string) {
-        return await this.fotoService.findFotoByID(fotoId);
+        const nuevafoto= await this.fotoService.findFotoByID(fotoId);
+        return nuevafoto;
     }
 
     @Post()
     @HttpCode(200)
     async create(@Body() fotoDTO: FotoDTO) {
-        return await this.fotoService.createFoto(fotoDTO);
+        const nuevafoto=await this.fotoService.createFoto(fotoDTO);
+        return nuevafoto;
     }
 
 

@@ -24,10 +24,12 @@ let FotoController = class FotoController {
         return await this.fotoService.findAllFotos();
     }
     async findOneBy(fotoId) {
-        return await this.fotoService.findFotoByID(fotoId);
+        const nuevafoto = await this.fotoService.findFotoByID(fotoId);
+        return nuevafoto;
     }
     async create(fotoDTO) {
-        return await this.fotoService.createFoto(fotoDTO);
+        const nuevafoto = await this.fotoService.createFoto(fotoDTO);
+        return nuevafoto;
     }
 };
 exports.FotoController = FotoController;

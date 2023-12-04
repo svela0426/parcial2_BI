@@ -4,7 +4,7 @@ import { AlbumDTO } from './album.dto';
 
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FotoEntity } from 'src/foto/foto.entity';
+import { FotoEntity } from '../foto/foto.entity';
 import { FotoService } from 'src/foto/foto.service';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class AlbumService {
 
   ) {}
 
-  async create(albumDTO: AlbumDTO): Promise<AlbumDTO> {
+  async create(albumDTO: AlbumDTO): Promise<AlbumEntity> {
     try {
       const album = new AlbumEntity();
       album.fecha_inicio = albumDTO.fecha_inicio;
@@ -27,7 +27,7 @@ export class AlbumService {
         throw new Error('El título no puede estar vacío');
       }
       await this.albumRepository.save(album);
-      return albumDTO;
+      return album;
     } catch (error) {
       throw new Error(`Error al crear el album: ${error.message}`);
     }
@@ -55,10 +55,7 @@ export class AlbumService {
   }
   
 
-
-
-
-  async findOne(id: string): Promise<AlbumDTO> {
+  async findOne(id: string): Promise<AlbumEntity> {
     const album = await this.albumRepository.findOneBy({"id":id});
     if (!album) 
             throw new Error('album no encontrado');

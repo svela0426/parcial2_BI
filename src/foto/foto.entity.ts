@@ -11,8 +11,9 @@ import {
   ManyToOne,
 } from 'typeorm';
 
-import {AlbumEntity} from 'src/album/album.entity';
-import { UsuarioEntity } from 'src/usuario/usuario.entity';
+import {AlbumEntity} from '../album/album.entity';
+
+import { UsuarioEntity } from '../usuario/usuario.entity';
 
 @Entity()
 export class FotoEntity {

@@ -1,7 +1,7 @@
 import {Column,Entity,OneToMany,PrimaryGeneratedColumn} from 'typeorm';
 
-import { AlbumEntity } from 'src/album/album.entity';
-import { FotoEntity } from 'src/foto/foto.entity';
+import { AlbumEntity } from '../album/album.entity';
+import { FotoEntity } from '../foto/foto.entity';
 
 @Entity()
 export class UsuarioEntity {

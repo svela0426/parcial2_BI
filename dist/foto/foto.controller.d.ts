@@ -4,6 +4,6 @@ export declare class FotoController {
     private readonly fotoService;
     constructor(fotoService: FotoService);
     findAll(): Promise<FotoDTO[]>;
-    findOneBy(fotoId: string): Promise<FotoDTO>;
-    create(fotoDTO: FotoDTO): Promise<FotoDTO>;
+    findOneBy(fotoId: string): Promise<import("./foto.entity").FotoEntity>;
+    create(fotoDTO: FotoDTO): Promise<import("./foto.entity").FotoEntity>;
 }

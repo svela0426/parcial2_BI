@@ -33,7 +33,7 @@ let AlbumService = class AlbumService {
                 throw new Error('El título no puede estar vacío');
             }
             await this.albumRepository.save(album);
-            return albumDTO;
+            return album;
         }
         catch (error) {
             throw new Error(`Error al crear el album: ${error.message}`);

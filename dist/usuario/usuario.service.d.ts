@@ -5,6 +5,6 @@ export declare class UsuarioService {
     private readonly usuarioRepository;
     constructor(usuarioRepository: Repository<UsuarioEntity>);
     create(usuarioDTO: UsuarioDTO): Promise<UsuarioDTO>;
-    findOne(id: string): Promise<UsuarioDTO>;
+    findOne(id: string): Promise<UsuarioEntity>;
     findAll(): Promise<UsuarioDTO[]>;
 }

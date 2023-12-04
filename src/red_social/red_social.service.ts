@@ -6,7 +6,7 @@ import { RedsocialDTO } from './red_social.dto';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class SportService {
+export class RedsocialService {
   constructor(
     @InjectRepository(RedsocialEntity)
     private readonly redSocialRepository: Repository<RedsocialEntity>,
@@ -14,13 +14,18 @@ export class SportService {
 
   async create(redsocialDTO: RedsocialDTO): Promise<RedsocialDTO> {
     try {
-      const red = new RedsocialEntity();
-      red.nombre = RedsocialDTO.nombre;
-      await this.redSocialRepository.save(red);
-      return redsocialDTO;
+        if (!redsocialDTO.slogan || redsocialDTO.slogan.length < 20) {
+            throw new Error('El slogan debe tener al menos 20 caracteres');
+        }
+        const red = new RedsocialEntity();
+        red.nombre = redsocialDTO.nombre;
+        red.slogan = redsocialDTO.slogan;
+        await this.redSocialRepository.save(red);
+        return redsocialDTO;
     } catch (error) {
-      // Manejar el error de manera adecuada (por ejemplo, loguearlo o lanzar una excepción personalizada)
-      throw new Error(`Error al crear el deporte: ${error.message}`);
+        throw new Error(`Error al crear el slogan: ${error.message}`);
     }
-  }
+}
+
+  
 }

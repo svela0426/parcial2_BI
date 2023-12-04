@@ -12,32 +12,35 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SportService = void 0;
+exports.RedsocialService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const red_social_entity_1 = require("./red_social.entity");
-const red_social_dto_1 = require("./red_social.dto");
 const typeorm_2 = require("typeorm");
-let SportService = class SportService {
+let RedsocialService = class RedsocialService {
     constructor(redSocialRepository) {
         this.redSocialRepository = redSocialRepository;
     }
     async create(redsocialDTO) {
         try {
+            if (!redsocialDTO.slogan || redsocialDTO.slogan.length < 20) {
+                throw new Error('El slogan debe tener al menos 20 caracteres');
+            }
             const red = new red_social_entity_1.RedsocialEntity();
-            red.nombre = red_social_dto_1.RedsocialDTO.nombre;
+            red.nombre = redsocialDTO.nombre;
+            red.slogan = redsocialDTO.slogan;
             await this.redSocialRepository.save(red);
             return redsocialDTO;
         }
         catch (error) {
-            throw new Error(`Error al crear el deporte: ${error.message}`);
+            throw new Error(`Error al crear el slogan: ${error.message}`);
         }
     }
 };
-exports.SportService = SportService;
-exports.SportService = SportService = __decorate([
+exports.RedsocialService = RedsocialService;
+exports.RedsocialService = RedsocialService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(red_social_entity_1.RedsocialEntity)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
-], SportService);
+], RedsocialService);
 //# sourceMappingURL=red_social.service.js.map

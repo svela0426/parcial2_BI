@@ -14,9 +14,11 @@ const typeorm_1 = require("@nestjs/typeorm");
 const usuario_module_1 = require("./usuario/usuario.module");
 const foto_module_1 = require("./foto/foto.module");
 const album_module_1 = require("./album/album.module");
+const red_social_module_1 = require("./red_social/red_social.module");
 const album_entity_1 = require("./album/album.entity");
 const foto_entity_1 = require("./foto/foto.entity");
 const usuario_entity_1 = require("./usuario/usuario.entity");
+const red_social_entity_1 = require("./red_social/red_social.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -25,6 +27,7 @@ exports.AppModule = AppModule = __decorate([
         imports: [usuario_module_1.UsuarioModule,
             foto_module_1.FotoModule,
             album_module_1.AlbumModule,
+            red_social_module_1.RedsocialModule,
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
                 host: 'localhost',
@@ -32,7 +35,7 @@ exports.AppModule = AppModule = __decorate([
                 username: 'postgres',
                 password: 'millos2011',
                 database: 'postgres',
-                entities: [album_entity_1.AlbumEntity, foto_entity_1.FotoEntity, usuario_entity_1.UsuarioEntity],
+                entities: [album_entity_1.AlbumEntity, foto_entity_1.FotoEntity, usuario_entity_1.UsuarioEntity, red_social_entity_1.RedsocialEntity],
                 dropSchema: true,
                 synchronize: true,
                 keepConnectionAlive: true,

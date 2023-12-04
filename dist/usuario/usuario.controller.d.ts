@@ -4,6 +4,6 @@ export declare class UusarioController {
     private readonly usuarioService;
     constructor(usuarioService: UsuarioService);
     create(usuarioDTO: UsuarioDTO): Promise<UsuarioDTO>;
-    findOne(id_usuario: string): Promise<UsuarioDTO>;
+    findOne(id_usuario: string): Promise<import("./usuario.entity").UsuarioEntity>;
     findAll(): Promise<UsuarioDTO[]>;
 }

@@ -1,5 +1,4 @@
 export class RedsocialDTO {
-    readonly id: string;
     readonly slogan: string;
     readonly nombre: string;
 

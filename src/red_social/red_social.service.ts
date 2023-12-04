@@ -12,7 +12,7 @@ export class RedsocialService {
     private readonly redSocialRepository: Repository<RedsocialEntity>,
   ) {}
 
-  async create(redsocialDTO: RedsocialDTO): Promise<RedsocialDTO> {
+  async create(redsocialDTO: RedsocialDTO): Promise<RedsocialEntity> {
     try {
         if (!redsocialDTO.slogan || redsocialDTO.slogan.length < 20) {
             throw new Error('El slogan debe tener al menos 20 caracteres');
@@ -21,7 +21,7 @@ export class RedsocialService {
         red.nombre = redsocialDTO.nombre;
         red.slogan = redsocialDTO.slogan;
         await this.redSocialRepository.save(red);
-        return redsocialDTO;
+        return red;
     } catch (error) {
         throw new Error(`Error al crear el slogan: ${error.message}`);
     }

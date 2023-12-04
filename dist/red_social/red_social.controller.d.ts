@@ -3,5 +3,5 @@ import { RedsocialDTO } from './red_social.dto';
 export declare class RedsocialController {
     private readonly fotoService;
     constructor(fotoService: RedsocialService);
-    create(fotoDTO: RedsocialDTO): Promise<RedsocialDTO>;
+    create(fotoDTO: RedsocialDTO): Promise<import("./red_social.entity").RedsocialEntity>;
 }

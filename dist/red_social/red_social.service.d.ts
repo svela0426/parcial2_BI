@@ -4,5 +4,5 @@ import { Repository } from 'typeorm';
 export declare class RedsocialService {
     private readonly redSocialRepository;
     constructor(redSocialRepository: Repository<RedsocialEntity>);
-    create(redsocialDTO: RedsocialDTO): Promise<RedsocialDTO>;
+    create(redsocialDTO: RedsocialDTO): Promise<RedsocialEntity>;
 }

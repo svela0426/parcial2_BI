@@ -30,7 +30,7 @@ let RedsocialService = class RedsocialService {
             red.nombre = redsocialDTO.nombre;
             red.slogan = redsocialDTO.slogan;
             await this.redSocialRepository.save(red);
-            return redsocialDTO;
+            return red;
         }
         catch (error) {
             throw new Error(`Error al crear el slogan: ${error.message}`);

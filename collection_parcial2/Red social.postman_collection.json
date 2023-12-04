@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "a58b26a1-f036-4898-b643-4ab16ff7a51d",
+		"name": "Red social",
+		"description": "Documentacion para creear una red social",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30774825"
+	},
+	"item": [
+		{
+			"name": "create Red social",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"slogan\": \"stringstringstringstringstringstringstringstring\",\n     \"nombre\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/red",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"red"
+					]
+				},
+				"description": "le pasamos por paremetro la informacion de la red social como su slogan y su nombre y nos reponde con :{ \"nombre\": \"string\", \"slogan\": \"stringstringstringstringstringstringstringstring\", \"id\": \"00c93d05-e8fd-4e11-80fd-5a2916cc6668\"}\n\ny codigo de respuesta es 200 OK"
+			},
+			"response": []
+		}
+	]
+}

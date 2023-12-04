@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "7e030a0f-f2da-46cf-b977-10897856871e",
+		"name": "album",
+		"description": "documentacion pruebas de postman dealbum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30774825"
+	},
+	"item": [
+		{
+			"name": "crear un album",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fecha_inicio\":  \"2019-11-30T12:30:00Z\",\n    \"fecha_fin\": \"2024-11-30T12:30:00Z\",\n    \"titulo\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/album",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"album"
+					]
+				},
+				"description": "Se crea la ptecion de crear un album segun las condiciones indicacdas , con su fecha de inicio, su fecha de fin y tu titulo adecuado:\n\nejemplos:\n\n``` json\n{\n    \"fecha_inicio\":  \"2019-11-30T12:30:00Z\",\n    \"fecha_fin\": \"2024-11-30T12:30:00Z\",\n    \"titulo\": \"string\"\n}\n\n ```\n\ncodigo de repsuesta : 200 OK"
+			},
+			"response": []
+		},
+		{
+			"name": "get all Albums",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/album",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"album"
+					]
+				},
+				"description": "en base a la creacion de albumes se solicita la obtencion de los albumes creados\n\nlo que se espera recibir :\n\n\\[ { \"id\": \"0104d546-906b-448c-988b-efdf81208b16\", \"fecha_inicio\": \"2019-11-30T12:30:00.000Z\", \"fecha_fin\": \"2024-11-30T12:30:00.000Z\", \"titulo\": \"string\", \"fotos\": \\[\\] }\\]\n\nstatus 200 ok"
+			},
+			"response": []
+		},
+		{
+			"name": "AGREGAR FOTO A ALBUM",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/album/agregar-foto-a-album/260d6c32-8257-40c2-b23b-ff5f199d2883/42c7aa6e-d480-48fd-ad7f-5a7b40c195a0",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"album",
+						"agregar-foto-a-album",
+						"260d6c32-8257-40c2-b23b-ff5f199d2883",
+						"42c7aa6e-d480-48fd-ad7f-5a7b40c195a0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Album",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/album/0104d546-906b-448c-988b-efdf81208b16",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"album",
+						"0104d546-906b-448c-988b-efdf81208b16"
+					]
+				},
+				"description": "le mandamos esto en la parte de el request : localhost:3000/album/0104d546-906b-448c-988b-efdf81208b16\n\ny nos responde con: status 204 no Content"
+			},
+			"response": []
+		},
+		{
+			"name": "get Album",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/album/e659f4af-75a1-4bc2-9780-8367ea5a9f71",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"album",
+						"e659f4af-75a1-4bc2-9780-8367ea5a9f71"
+					]
+				},
+				"description": "{ \"id\": \"e659f4af-75a1-4bc2-9780-8367ea5a9f71\", \"fecha_inicio\": \"2019-11-30T12:30:00.000Z\", \"fecha_fin\": \"2024-11-30T12:30:00.000Z\", \"titulo\": \"string\", \"fotos\": \\[\\]}\n\nsi le mando por consola el id de un album ya existente este me reponde con la infromacion del album\n\n:\n\nlocalhost:3000/album/e659f4af-75a1-4bc2-9780-8367ea5a9f71"
+			},
+			"response": []
+		}
+	]
+}

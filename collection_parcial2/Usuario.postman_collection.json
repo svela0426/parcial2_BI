@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "5369280e-295e-47e1-89ad-cf209dedc641",
+		"name": "Usuario",
+		"description": "Prueba de documentacion y creacion de un usuario, como su creacion buscar usuario y obtener todos los usuarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30774825"
+	},
+	"item": [
+		{
+			"name": "crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"nombre\": \"hola_primer_intendo\",\n     \"email\": \"string\",\n     \"telefono\": \"12345678901\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/usuario/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuario",
+						"create"
+					]
+				},
+				"description": "codigo de respuesta 200 OK, le pasamos informacion para crear un usuario en la base de datos"
+			},
+			"response": []
+		},
+		{
+			"name": "find all usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/usuario",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuario"
+					]
+				},
+				"description": "respuesta 200 ok"
+			},
+			"response": []
+		},
+		{
+			"name": "find a Usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/usuario/728d4aa7-fd57-4473-a98a-84f5a1686422",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuario",
+						"728d4aa7-fd57-4473-a98a-84f5a1686422"
+					]
+				},
+				"description": "respuesta 200 ok"
+			},
+			"response": []
+		}
+	]
+}

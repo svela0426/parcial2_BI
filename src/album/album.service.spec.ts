@@ -74,7 +74,7 @@ describe('AlbumService', () => {
         expect(fotos).not.toBeNull();
       });
 
-      it('findOne should return a museum by id', async () => {
+      it('findOne should return a album by id', async () => {
         const storedMuseum: AlbumEntity = fotosList[0];
         const museum: AlbumEntity = await fotoService.findOne(storedMuseum.id);
         expect(museum).not.toBeNull();
